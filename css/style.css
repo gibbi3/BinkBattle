@@ -6,6 +6,13 @@ body {
 h1 {
   height: 10%;
   text-align: center;
+  cursor: default;
+}
+
+.reset {
+  cursor: default;
+  text-align: center;
+  color: white;
 }
 
 .container {
@@ -41,6 +48,10 @@ h1 {
   text-align: center;
   width: 70%;
   height: 90%;
+}
+
+.default-bink {
+  width: 75%;
 }
 
 .cat-list {
@@ -81,7 +92,7 @@ h1 {
 
   .cat-1 {
     width: 100%;
-    
+
   }
 
   .cat-2 {

@@ -55,4 +55,13 @@ $(function() {
   })
 });
 
+$(function() {
+  $(document).on('click', '.reset', function() {
+    for (c in cats) {
+      cats[c].clicks = 0;
+      $('.clicks').text("0");
+    }
+  })
+});
+
 catList();
