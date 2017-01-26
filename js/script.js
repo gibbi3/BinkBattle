@@ -1,15 +1,50 @@
-clickcount1 = 0;
-clickcount2 = 0;
+var model = {
+  currentCat: null,
+  cats: [
 
-$('#click-cat1').click(function() {
-  clickcount1 += 1;
-  $('#click-count1').text("Clicks: " + clickcount1);
-});
+    {
+  		"name": "Bink",
+  		"pic": "img/bink.jpg",
+  		"clicks": 0
+  	},
+    {
+  		"name": "Binkston",
+  		"pic": "img/binkston.jpg",
+  		"clicks": 0
+  	},
+    {
+  		"name": "Bink",
+  		"pic": "img/bink.jpg",
+  		"clicks": 0
+  	},
+    {
+  		"name": "Binkston",
+  		"pic": "img/binkston.jpg",
+  		"clicks": 0
+  	},
+    {
+  		"name": "Bink",
+  		"pic": "img/bink.jpg",
+  		"clicks": 0
+  	}
+  ],
+};
 
-$('#click-cat2').click(function() {
-  clickcount2 += 1;
-  $('#click-count2').text("Clicks: " + clickcount2);
-});
+var octopus = {
 
-$('#click-count1').text(clickcount1);
-$('#click-count2').text(clickcount2);
+  getAllCats: function() {
+    return model.cats;
+  },
+
+  getCurrentCat: function() {
+    return model.currentCat;
+  },
+
+  setCurrentCat: function(cat) {
+    model.currentCat = cat;
+  },
+
+  clickCount: function(cat) {
+    model.currentCat.clicks++;
+  }
+};

@@ -1,4 +1,3 @@
-$(function() {
 var model = {
   currentCat: null,
   cats: [
@@ -33,6 +32,18 @@ var model = {
 
 var octopus = {
 
+  init: function() {
+    this.setCatID();
+    model.currentCat = model.cats[0];
+    view.catList();
+  },
+
+  setCatID: function() {
+    model.cats.forEach(function(cat, index) {
+    cat.id = index;
+  });
+  },
+
   getAllCats: function() {
     return model.cats;
   },
@@ -42,55 +53,38 @@ var octopus = {
   },
 
   setCurrentCat: function(cat) {
-    model.currentCat = cat;
+    model.currentCat = model.cats[cat];
   },
 
-  clickCount: function(cat) {
-    model.currentCat.clicks++;
-    catNow(cat);
+  clickPlus: function(cat) {
+    cat.clicks++;
   }
-
 }
 
-$(document).on('click', '.clickable', function(cat) {
-  var cat = this.id;
-  console.log(cat);
-  currentCat = cat;
-  catNow(cat);
-});
+var view = {
 
-
-$(document).on('click', '.selected', function() {
-  var clicked = this.id;
-  console.log(clicked);
-  model.cats[clicked].clicks +=1;
-  console.log(model.cats[clicked].clicks);
-  $('.clicks').text(model.cats[clicked].clicks);
-});
-
-
-$(document).on('click', '.reset', function() {
-  for (c in cats) {
-    cats[c].clicks = 0;
-    $('.clicks').text("0");
-  }
-})
-
-function catList() {
+catList: function() {
   var cats = octopus.getAllCats();
-  for (c in cats) {
-    $('#cat-list').append("<div class='cat'>" + cats[c].name +
+  for (c = 0; c < cats.length; c++) {
+    var cat = cats[c];
+    $('#cat-list').append("<div class='cat'>" + cat.name +
       "<img class='clickable' id='"+c+"' src='" + cats[c].pic + "'></div>");
+    $(document).on('click', '.clickable', function() {
+      octopus.setCurrentCat(this.id);
+      view.catNow();
+      });
     }
-  };
+  },
 
-function catNow(cat) {
-  $('#cat-container').replaceWith("<div id='cat-container' "+
-    "class='cat-container'><div class='cat'>" + model.cats[cat].name +
-    "<img class='selected' id='"+ cat +"'src='" + model.cats[cat].pic +
-    "'><div class='clicks'>"+model.cats[cat].clicks+"</div></div></div>");
-}
+catNow: function(cat) {
+  cat = octopus.getCurrentCat();
+    $('#cat-container').replaceWith("<div id='cat-container' " +
+      "class='cat-container'><div class='cat'>" + cat.name +
+      "<img class='selected' id='"+ cat +"'src='" + cat.pic +
+      "'><div class='clicks'>"+ cat.clicks+"</div></div></div>");
+    $(document).on('click', '.selected', function(cat) {
 
-catList();
-
-});
+    })
+  }
+};
+octopus.init();
