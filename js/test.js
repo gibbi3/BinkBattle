@@ -164,6 +164,9 @@ var viewCatNow = {
 
     this.submitButton.addEventListener('click', function() {
       octopus.updateCat();
+      document.getElementById('new-name').value = '';
+      document.getElementById('new-pic').value = '';
+      document.getElementById('new-clicks').value = '';
     });
 
     this.cancelButton.addEventListener('click', function(){
