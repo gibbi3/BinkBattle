@@ -183,16 +183,8 @@ var viewCatNow = {
     val = octopus.isAdmin();
     if (val === false) {
       this.adminView.style.display = 'none';
-    }else if(val === true) {
-      this.adminView.style.display = 'flex';
-    };
-
-    console.log(this.count);
-    console.log(this.name);
-    console.log(this.cat);
-    console.log(currentCat.name);
-
-  },
+    }
+  }
 };
 
 octopus.init();
