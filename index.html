@@ -12,12 +12,24 @@
   <div class="container">
     <div id="cat-list" class="cat-list"></div>
     <div id="cat-container" class="cat-container">
-      <img class="default-bink" src="img/binkston.jpg"></img>
-      <h2>Let it begin...</h2>
-      <div class='clicks'></div>
+      <h1 class="name" id="name"></h1>
+      <img class="cat" id="cat" src=""></img>
+      <h2 id="opener">Battle Royale!</h2>
+      <div class="clicks" id="clicks"></div>
     </div>
   </div>
-  <h2 class="reset">Reset</h2>
+  <button id="admin-button" class="admin-button">Admin</button>
+  <div class="admin-view" id="admin-view">
+      <label>New Name</label>
+      <input id="new-name" type="text"></input>
+      <label>Picture URL</label>
+      <input id="new-pic"type="text"></input>
+      <label>Clicks!</label>
+      <input id="new-clicks" type="text"></input>
+      <button id="submit" type="submit">Submit</button>
+      <button id="cancel">Cancel</button>
+      <button id = "reset" class="reset">Reset</button>
+  </div>
   <script src="js/libs/jquery.min.js"></script>
   <script src="js/test.js"></script>
 </body>
