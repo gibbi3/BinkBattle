@@ -1,7 +1,10 @@
 var model = {
   currentCat: null,
   admin: false,
-  cats: [
+
+  cats: JSON.parse(localStorage.getItem('cats')),
+
+  baseModel: [
 
     {
   		"name": "Bink",
@@ -34,16 +37,31 @@ var model = {
 var octopus = {
 
   init: function() {
-    octopus.setCatID();
+    this.setBaseModel();
     model.currentCat = model.cats[0];
     viewCatList.init();
     viewCatNow.init();
   },
 
-  setCatID: function() {
-    model.cats.forEach(function(cat, index) {
-    cat.id = index;
-  });
+  setBaseModel: function() {
+    var catcheck = this.checkStorage();
+    if (catcheck == false) {
+      localStorage.setItem('cats', JSON.stringify(model.baseModel));
+      location.reload();
+    } else {
+      console.log("Cats are present in storage!")
+    }
+    },
+
+  setCurrentModel: function() {
+    localStorage.setItem('cats', JSON.stringify(model.cats));
+  },
+
+  checkStorage: function() {
+    cats = localStorage.getItem('cats')
+    if (cats !== null) {
+      return true;
+    } else { return false };
   },
 
   getAllCats: function() {
@@ -96,6 +114,7 @@ var octopus = {
     if (document.getElementById('new-clicks').value.length != 0) {
       model.currentCat.clicks = document.getElementById('new-clicks').value;
     }
+    this.setCurrentModel();
     viewCatNow.render();
     viewCatList.render();
   }
@@ -120,6 +139,7 @@ render: function() {
       return function() {
         octopus.setCurrentCat(catCopy);
         viewCatNow.render();
+        viewCatList.render();
     };
   })(cat));
 
