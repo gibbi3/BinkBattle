@@ -1,4 +1,5 @@
 var model = {
+
   currentCat: null,
   admin: false,
 
@@ -41,6 +42,7 @@ var octopus = {
     model.currentCat = model.cats[0];
     viewCatList.init();
     viewCatNow.init();
+    this.adminFalse();
   },
 
   setBaseModel: function() {
@@ -51,7 +53,7 @@ var octopus = {
     } else {
       console.log("Cats are present in storage!")
     }
-    },
+  },
 
   setCurrentModel: function() {
     localStorage.setItem('cats', JSON.stringify(model.cats));
@@ -88,10 +90,6 @@ var octopus = {
     }
   },
 
-  isAdmin: function() {
-    return model.admin;
-  },
-
   adminTrue: function() {
     model.admin = true;
     viewCatNow.adminView.style.display = 'flex';
@@ -117,7 +115,14 @@ var octopus = {
     this.setCurrentModel();
     viewCatNow.render();
     viewCatList.render();
-  }
+  },
+
+  reset: function() {
+    window.localStorage.clear();
+    octopus.resetCount();
+    location.reload();
+  },
+
 }
 
 var viewCatList = {
@@ -140,8 +145,8 @@ render: function() {
         octopus.setCurrentCat(catCopy);
         viewCatNow.render();
         viewCatList.render();
-    };
-  })(cat));
+      };
+    })(cat));
 
     this.catListElem.appendChild(elem);
     this.catListElem.appendChild(pic);
@@ -151,8 +156,8 @@ render: function() {
 init: function() {
   this.catListElem = document.getElementById('cat-list');
   viewCatList.render();
-    }
-}
+  }
+};
 
 var viewCatNow = {
 
@@ -173,8 +178,7 @@ var viewCatNow = {
     });
 
     this.reset.addEventListener('click', function() {
-      octopus.resetCount();
-      viewCatNow.render();
+      octopus.reset();
     });
 
     this.adminButton.addEventListener('click', function(){
@@ -195,6 +199,7 @@ var viewCatNow = {
     });
 
     this.render();
+
   },
 
   render: function() {
@@ -202,12 +207,8 @@ var viewCatNow = {
     this.count.textContent = currentCat.clicks;
     this.name.textContent = currentCat.name;
     this.cat.src = currentCat.pic;
-
-    val = octopus.isAdmin();
-    if (val === false) {
-      this.adminView.style.display = 'none';
-    }
   }
+
 };
 
 octopus.init();
