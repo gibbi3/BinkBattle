@@ -1,0 +1,95 @@
+body {
+  font-family: 'Raleway', sans-serif;
+  background: lightblue;
+}
+
+h1 {
+  height: 10%;
+  text-align: center;
+  cursor: default;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 640px;
+}
+
+.clickable {
+  width: 20%;
+  height: 20%;
+}
+
+.selected {
+  width: 50%;
+  height: 50%;
+}
+
+.click-cat {
+  max-width: 60%;
+  border-radius: 30px;
+}
+
+.click-count {
+  text-align: center;
+}
+
+.cat-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  width: 70%;
+  height: 90%;
+}
+
+.default-bink {
+  width: 75%;
+}
+
+.cat-list {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  border-right: solid white 2px;
+}
+
+.cat {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+@media only screen and (max-width: 500px) {
+
+  body {
+      text-align: center;
+  }
+
+  .container {
+    display: block;
+  }
+
+  .cat-container {
+    flex-direction: column;
+    align-items: center;
+    width: 90%
+  }
+
+  .click-cat {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cat-1 {
+    width: 100%;
+
+  }
+
+  .cat-2 {
+    width: 100%;
+  }
+}

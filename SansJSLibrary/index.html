@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <title>BattleBink!</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script src="bower_components/knockout/dist/knockout.js"></script>
+</head>
+<body>
+  <h1 class="header">Battle of Binks</h1>
+  <div class="container">
+    <div id="cat-list" class="cat-list"></div>
+    <div id="cat-container" class="cat-container">
+      <h1 class="name" id="name"></h1>
+      <img class="cat" id="cat" src=""></img>
+      <h2 id="opener">Battle Royale!</h2>
+      <div class="clicks" id="clicks"></div>
+    </div>
+  </div>
+  <button id="admin-button" class="admin-button">Admin</button>
+  <div class="admin-view" id="admin-view">
+      <label>New Name</label>
+      <input id="new-name" type="text"></input>
+      <label>Picture URL</label>
+      <input id="new-pic"type="text"></input>
+      <label>Clicks!</label>
+      <input id="new-clicks" type="text"></input>
+      <button id="submit" type="submit">Submit</button>
+      <button id="cancel">Cancel</button>
+      <button id = "reset" class="reset">Reset</button>
+  </div>
+  <script src="js/libs/jquery.min.js"></script>
+  <script src="js/test.js"></script>
+</body>
+</html>
