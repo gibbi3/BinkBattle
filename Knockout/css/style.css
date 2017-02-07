@@ -7,6 +7,11 @@ h1 {
   height: 10%;
   text-align: center;
   cursor: default;
+  font-size: 45px;
+}
+
+.header {
+  text-transform: uppercase;
 }
 
 .container {
